@@ -1,0 +1,55 @@
+@HOST = https://compro-quizhub-backend-6fp366znna-uc.a.run.app
+# @HOST = http://localhost:3000
+
+@JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ4NGRiYzU0NzkzNzMzODdjZjhiYzQiLCJuYW1lIjoiYnlhIiwiZW1haWwiOiJieWFAbWl1LmVkdSIsInBhc3N3b3JkIjoiIiwicm9sZSI6InN0dWRlbnQiLCJjcmVhdGVkQXQiOiIyMDIzLTA0LTI1VDIyOjAxOjMyLjY3NloiLCJ1cGRhdGVkQXQiOiIyMDIzLTA0LTI1VDIyOjAxOjMyLjY3NloiLCJfX3YiOjAsImlhdCI6MTY4MjQ2MzcyOX0.SFu0cAcGB71WJHWcDs_u24zxVmzWTyc-e2ms-xfwtzU
+@COURSE_ID = 64433e1d7b583fe9bf95dfc2
+
+###
+GET {{HOST}}/api/courses?page_number=1&limit=2&course_code=CS572
+Authorization: Bearer {{JWT}}
+
+
+###
+GET http://localhost:3000/api/courses
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:3000/api/courses/meta?course_code=CS572
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:3000/api/courses/count
+Authorization: Bearer {{JWT}}
+
+###
+POST http://localhost:3000/api/courses
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+  "course_code": "CS5721",
+  "title": "Modern Web Application Programming",
+  "instructor": "Prof. John Doe",
+  "description": "This course is about modern web application programming using MEAN stack.",
+  "term": "2022-04-04"
+}
+
+###
+GET http://localhost:3000/api/courses/{{ COURSE_ID }}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+###
+PATCH http://localhost:3000/api/courses/{{ COURSE_ID }}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+  "title": "MWAP123",
+  "instructor": "Byam"
+}
+
+###
+DELETE http://localhost:3000/api/courses/{{ COURSE_ID }}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}

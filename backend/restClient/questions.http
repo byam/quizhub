@@ -1,0 +1,53 @@
+@JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ0MDdlODU5ODkyMDdkZWUwNzkxN2YiLCJuYW1lIjoiZWVnaWkiLCJlbWFpbCI6ImVlZ2lpMkBtaXUuZWR1IiwicGFzc3dvcmQiOiIiLCJyb2xlIjoic3R1ZGVudCIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMjJUMTY6MTQ6MzIuNjM4WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMjJUMTY6MTQ6MzIuNjM4WiIsIl9fdiI6MCwiaWF0IjoxNjgyMTgwMDc2fQ.wGlnghnPkEUJu2B0d1S9-Ijd4PFCXSBmnWHObcOJMBs
+@COURSE_ID = 64433dff2435cdf28b6160e7
+@QUESTION_ID = 6444b9fc537933276d4b2aa8
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions/order_by?text=st
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+
+###
+POST http://localhost:3000/api/courses/{{COURSE_ID}}/questions
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+     "text": "What is event loop?",
+     "choices":["bla", "blabla"],
+     "correctIndex": 0,
+     "explanation": "short answer!"
+}
+
+
+###
+PATCH http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+     "text": "4 Title",
+     "choices": [
+          "4bla",
+          "3blabla"
+        ],
+     "correctIndex": 3,
+     "explanation": "3lool"
+}
+
+
+###
+DELETE  http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+

@@ -1,0 +1,61 @@
+# @JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ0MDdlODU5ODkyMDdkZWUwNzkxN2YiLCJuYW1lIjoiZWVnaWkiLCJlbWFpbCI6ImVlZ2lpMkBtaXUuZWR1IiwicGFzc3dvcmQiOiIiLCJyb2xlIjoic3R1ZGVudCIsImNyZWF0ZWRBdCI6IjIwMjMtMDQtMjJUMTY6MTQ6MzIuNjM4WiIsInVwZGF0ZWRBdCI6IjIwMjMtMDQtMjJUMTY6MTQ6MzIuNjM4WiIsIl9fdiI6MCwiaWF0IjoxNjgyMTgwMDc2fQ.wGlnghnPkEUJu2B0d1S9-Ijd4PFCXSBmnWHObcOJMBs
+# @JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQzMWE4Yjg5OTU2M2ZhMDc3Y2IzMTIiLCJuYW1lIjoiYnlhIiwiZW1haWwiOiJieWFAbWl1LmVkdSIsInBhc3N3b3JkIjoiIiwicm9sZSI6InN0dWRlbnQiLCJjcmVhdGVkQXQiOiIyMDIzLTA0LTIxVDIzOjIxOjQ3LjAxN1oiLCJ1cGRhdGVkQXQiOiIyMDIzLTA0LTIxVDIzOjIxOjQ3LjAxN1oiLCJfX3YiOjAsImlhdCI6MTY4MjM0ODc0OX0.eMSpYZeqLFrnOjKtVuvI9FvHMOzHtRGf6Z6hO2XV_IE
+@JWT = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDQ2OWJkYmM5MzJhZTYxNmEzZWM5NzEiLCJuYW1lIjoiYmFhZ2lpIiwiZW1haWwiOiJiYWFnaWlAbWl1LmVkdSIsInBhc3N3b3JkIjoiIiwicm9sZSI6InN0dWRlbnQiLCJjcmVhdGVkQXQiOiIyMDIzLTA0LTI0VDE1OjEwOjE5LjE3NFoiLCJ1cGRhdGVkQXQiOiIyMDIzLTA0LTI0VDE1OjEwOjE5LjE3NFoiLCJfX3YiOjAsImlhdCI6MTY4MjM0OTAyN30.nHTGzItkx-xdLBx1vfbzXXCaRn-th7k4Eh2WxRExeYE
+@COURSE_ID = 6443401608e504121ab4be22
+@QUESTION_ID = 6446a479bd47de087bcf550e
+@COMMENT_ID = 6444bd27537933276d4b2b28
+@REACTION_ID = 6444cd26d9768f352ed1e384
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions
+Authorization: Bearer {{JWT}}
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/count
+Authorization: Bearer {{JWT}}
+
+
+###
+GET http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/{{REACTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+
+###
+POST http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+     "type": "up"
+}
+
+
+###
+PATCH http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/{{REACTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+     "type": "down"
+}
+
+###
+PATCH http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/update/by_user
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+{
+     "type": "down"
+}
+
+
+###
+DELETE  http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/{{REACTION_ID}}
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
+
+###
+DELETE  http://localhost:3000/api/courses/{{COURSE_ID}}/questions/{{QUESTION_ID}}/reactions/delete/by_user
+Content-Type: application/json
+Authorization: Bearer {{JWT}}
