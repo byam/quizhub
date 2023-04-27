@@ -4,7 +4,12 @@ import { CoursesService, ICourse, ICoursesMeta } from './courses.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { IState } from '../interfaces/state';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -89,7 +94,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
             </button>
           </div>
         </form>
-
 
         <!-- Course List -->
         <br />
@@ -346,7 +350,6 @@ export class ListComponent {
   }
 
   changeCourseCode(e: any) {
-    console.log(e.target.value);
     if (e.target.value === 'All') {
       this.course_code = '';
     } else {
@@ -365,9 +368,9 @@ export class ListComponent {
     this.getCourses(this.current_page, this.course_code);
   }
 
-  submitSearch(){
-    console.log(this.formSearch.get('text')?.value);
-    if (this.formSearch.get('text')?.value){
+  submitSearch() {
+    this.form.get('course_code')?.setValue('All');
+    if (this.formSearch.get('text')?.value) {
       this.courseService
         .getCoursesBySearch(this.formSearch.get('text')?.value as string)
         .subscribe((response) => {

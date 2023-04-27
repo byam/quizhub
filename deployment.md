@@ -5,7 +5,7 @@
   - [Frontend](#frontend)
     - [Local test](#local-test)
     - [Docker test](#docker-test)
-  - [Deploy to Firebase Hosting](#deploy-to-firebase-hosting)
+    - [Deploy to Firebase Hosting](#deploy-to-firebase-hosting)
   - [Backend](#backend)
     - [Backend local test](#backend-local-test)
     - [Backend Deploy to CloudRun](#backend-deploy-to-cloudrun)
@@ -53,7 +53,7 @@ docker run -it -p 8080:8080 docker.io/library/frontend:local
 
 Go to <http://localhost:8080>
 
-## Deploy to Firebase Hosting
+### Deploy to Firebase Hosting
 
 ```sh
 # build files
