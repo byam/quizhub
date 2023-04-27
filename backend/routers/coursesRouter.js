@@ -8,6 +8,7 @@ import {
     deleteCourseById,
     getCoursesCount,
     getCoursesMetaData,
+    getCoursesBySearch,
 } from "../controllers/coursesController.js";
 
 const router = Router();
@@ -15,6 +16,7 @@ const router = Router();
 router.get("/", getCourses);
 router.get("/meta", getCoursesMetaData);
 router.get("/count", getCoursesCount);
+router.get("/search", getCoursesBySearch);
 router.post("/", postCourse);
 router.get("/:course_id", getCourseById);
 router.patch("/:course_id", updateCourseById);

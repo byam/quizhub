@@ -16,6 +16,40 @@ export async function postCourse(req, res, next) {
     }
 }
 
+export async function getCoursesBySearch(req, res, next) {
+    try {
+        const { text } = req.query;
+        const result = await courseModel.find(
+            // query
+            {
+                $or: [
+                    { course_code: { $regex: text, $options: "i" } }, // search in course_code field
+                    // { term: { $regex: text, $options: "i" } },
+                    { title: { $regex: text, $options: "i" } }, // search in title field
+                    { instructor: { $regex: text, $options: "i" } }, // search in instructor field
+                    { description: { $regex: text, $options: "i" } }, // search in description field
+                ],
+            },
+            //projection
+            {
+                // exclude all questions fields except _id
+                "questions.user": 0,
+                "questions.text": 0,
+                "questions.choices": 0,
+                "questions.correctIndex": 0,
+                "questions.explanation": 0,
+                "questions.createdAt": 0,
+                "questions.updatedAt": 0,
+                "questions.reactions": 0,
+                "questions.comments": 0,
+            }
+        );
+        res.json({ success: true, data: result });
+    } catch (error) {
+        next(error);
+    }
+}
+
 export async function getCoursesCount(req, res, next) {
     try {
         const result = await courseModel.find({}, {}).countDocuments();

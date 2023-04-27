@@ -20,11 +20,19 @@ export class CoursesService {
       );
     }
   }
+
+  getCoursesBySearch(text: string){
+   return this.http.get<{ success: boolean; data: ICourse[] }>(
+     environment.HTTP_SERVER + `/api/courses/search?text=${text}`
+   );
+  }
+
   getCoursesCount() {
     return this.http.get<{ success: boolean; data: number }>(
       environment.HTTP_SERVER + `/api/courses/count`
     );
   }
+
   getCourses(page_number: number, page_size: number, course_code: string) {
     if (course_code) {
       return this.http.get<{ success: boolean; data: ICourse[] }>(
@@ -92,6 +100,7 @@ export class CoursesService {
         `/api/courses/${course_id}/questions/${question_id}`
     );
   }
+
   removeQuestion(course_id: string, question_id: string) {
     return this.http.delete<{ success: boolean; data: any }>(
       environment.HTTP_SERVER +
